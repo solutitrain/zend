@@ -7,6 +7,9 @@
 
 namespace Application\Model;
 
+use \Zend\Db\ResultSet\ResultSet;
+use \Zend\Db\TableGateway\TableGateway;
+
 class Db
 {
  
@@ -22,6 +25,27 @@ class Db
         return $row->fetchAll();
         
     
+    }
+
+    public static function getAdapter() {
+        $configLocal = require( __DIR__.'/../../../../config/autoload/local.php' );
+
+        $adapter = new \Zend\Db\Adapter\Adapter( $configLocal['database'] );
+
+        return $adapter;
+    }
+
+    public static function getTableGatewayProduto() {
+        $dbAdapter = self::getAdapter();
+        $resultSetPrototype = new ResultSet();
+        $resultSetPrototype->setArrayObjectPrototype(new Produto());
+        return new TableGateway('produto', $dbAdapter, null, $resultSetPrototype);
+    }
+
+    public static function getProdutoTable() {
+        $tableGateway = self::getTableGatewayProduto();
+        $table = new ProdutoTable($tableGateway);
+        return $table;
     }
 
 }
