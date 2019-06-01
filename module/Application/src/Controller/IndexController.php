@@ -10,6 +10,8 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+session_start();
+
 class IndexController extends AbstractActionController
 {
     public function indexAction()
@@ -68,6 +70,7 @@ class IndexController extends AbstractActionController
     }
     public function logoutAction()
     {
+        unset( $_SESSION['login'] );
         return new ViewModel();
     }
 }
