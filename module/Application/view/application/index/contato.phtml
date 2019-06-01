@@ -1,0 +1,61 @@
+<?php 
+
+class Form_Contato extends Zend\Form\Form {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->add( [
+            'name' => 'username',
+            'type' => Zend\Form\Element\Text::class,
+            'options' => [
+                'label' => 'Nome'
+            ],
+            'attributes' => [
+                'id' => 'username',
+                'class' => 'form-control'
+            ]
+        ] );
+        $this->add( [
+            'name' => 'Email',
+            'type' => Zend\Form\Element\Text::class,
+            'options' => [
+                'label' => 'Email'
+            ],
+            'attributes' => [
+                'id' => 'Email',
+                'class' => 'form-control'
+            ]
+        ] );
+        $this->add( [
+            'name' => 'Texto',
+            'type' => Zend\Form\Element\Text::class,
+            'options' => [
+                'label' => 'Texto'
+            ],
+            'attributes' => [
+                'id' => 'Texto',
+                'class' => 'form-control'
+            ]
+        ] );
+        $this->add( [
+            'name' => 'submit',
+            'type' => Zend\Form\Element\Submit::class,
+            'attributes' => [
+                'id' => 'submit',
+                'value' => 'Logar',
+                'class' => 'btn btn-success'
+            ]
+        ] );
+    }
+}
+
+$form = new Form_Contato();
+
+?>
+
+<div class="jumbotron">
+    <?php echo $this->form( $form ); ?>
+</div>
+

@@ -9,8 +9,8 @@ $request = $sm->get('request');
 
 $routeMatch = $router->match($request);
 
-$controller = $routeMatch->getParam('controller');
-$action = $routeMatch->getParam('action');
+//$controller = $routeMatch->getParam('controller');
+$action = '';//$routeMatch->getParam('action');
 
 ?>
 
@@ -55,7 +55,7 @@ $action = $routeMatch->getParam('action');
                         <li class="<?php echo ($action == 'index') ? 'active':''; ?>"><a href="<?= $this->url('home') ?>">Home</a></li>
                         <li class="<?php echo ($action == 'login') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'login']) ?>">Login</a></li>
                         <li class="<?php echo ($action == 'produto') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'produto']) ?>">produto</a></li>
-
+                        <li class="<?php echo ($action == 'contato') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'contato']) ?>">Contato</a></li>
                     </ul>
                 </div>
             </div>
