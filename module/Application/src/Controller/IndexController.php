@@ -60,6 +60,7 @@ class IndexController extends AbstractActionController
     public function contatoAction()
     {
         return new ViewModel();
+        
     }
     public function dbAction()
     {
