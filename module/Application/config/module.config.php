@@ -30,7 +30,7 @@ return [
                     'route'    => '/application[/:action]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'action'     => 'produto',
                     ],
                 ],
             ],

@@ -1,0 +1,74 @@
+<?php 
+
+class Form_produto extends Zend\Form\Form {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->add( [
+            'name' => 'codigo',
+            'type' => Zend\Form\Element\Text::class,
+            'options' => [
+                'label' => 'Codigo Produto'
+            ],
+            'attributes' => [
+                'id' => 'codigoproduto',
+                'class' => 'form-control'
+            ]
+        ] );
+
+        $this->add( [
+            'name' => 'descri',
+            'type' => Zend\Form\Element\Password::class,
+            'options' => [
+                'label' => 'Descrição do produto'
+            ],
+            'attributes' => [
+                'id' => 'descri',
+                'class' => 'form-control'
+            ]
+        ] );
+        
+        $this->add( [
+            'name' => 'valor',
+            'type' => Zend\Form\Element\Text::class,
+            'options' => [
+                'label' => 'Valor do Produto'
+            ],
+            'attributes' => [
+                'id' => 'valorproduto',
+                'class' => 'form-control'
+            ]
+        ] );
+        $this->add( [
+            'name' => 'quantidade',
+            'type' => Zend\Form\Element\Text::class,
+            'options' => [
+                'label' => 'Quantidade do Produto'
+            ],
+            'attributes' => [
+                'id' => 'qtdproduto',
+                'class' => 'form-control'
+            ]
+        ] );
+        $this->add( [
+            'name' => 'grava',
+            'type' => Zend\Form\Element\Submit::class,
+            'attributes' => [
+                'id' => 'submit',
+                'value' => 'Gravar',
+                'class' => 'btn btn-success'
+            ]
+        ] );         
+    }
+}
+
+$form = new Form_produto();
+
+?>
+
+<div class="jumbotron">
+    <?php echo $this->form( $form ); ?>
+</div>
+
