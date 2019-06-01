@@ -56,7 +56,34 @@ class IndexController extends AbstractActionController
 
     public function produtoAction()
     {
-        return new ViewModel();
+        $produtoTable = \Application\Model\Db::getProdutoTable();
+        $mensagem = '';
+
+        if( !empty($_POST) ) {
+
+            var_dump($_POST);
+            $validator = new \Zend\Validator\Digits();
+            if ( $validator->isValid( trim( $_POST['quantidade'] ) ) && $validator->isValid( trim( $_POST['codigo'] ) )) {
+                $mensagem = 'Inserção no banco';
+                
+                \Application\Model\Produto::insertProduto([
+                    'codigo' => $_POST["codigo"],
+                    'descriscao' => $_POST["descri"],
+                    'valor' => $_POST["valor"],
+                    'quantidade' => $_POST["quantidade"],
+
+                    'produtoGateway' => $produtoTable,
+                ]);
+            } else {
+                $mensagem = 'não valido';
+            }
+        }
+
+        var_dump( $produtoTable );
+
+        return new ViewModel([
+            'mensagem' => $mensagem,
+        ]);
     }
     
     public function contatoAction()

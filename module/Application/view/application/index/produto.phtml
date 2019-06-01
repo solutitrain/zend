@@ -1,14 +1,4 @@
 <?php 
-if (!empty($_POST)) {
-    var_dump($_POST);
-    $validator = new Zend\Validator\Digits();
-    if ( $validator->isValid( trim( $_POST['quantidade'] ) ) && $validator->isValid( trim( $_POST['codigo'] ) )) {
-        echo 'Inserção no banco';
-    } else {
-        echo 'não valido';
-    }
-    
-}
 
 class Form_produto extends Zend\Form\Form {
 
@@ -79,6 +69,10 @@ $form = new Form_produto();
 ?>
 
 <div class="jumbotron">
+    <?php 
+        if( !empty( $this->mensagem ) ) 
+            echo $this->mensagem; 
+    ?>
     <?php echo $this->form( $form ); ?>
 </div>
 
