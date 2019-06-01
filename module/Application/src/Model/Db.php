@@ -23,5 +23,23 @@ class Db
         
     
     }
+    public static function verificarUsuario($usuario, $senha){
+
+        $configLocal = require( __DIR__.'/../../../../config/autoload/local.php' );
+
+        $adapter = new \Zend\Db\Adapter\Adapter( $configLocal['database'] );
+
+        //$result = $adapter->query('INSERT INTO `usuario` (usuario, senha) values ("brenno", "3200")' )->execute();
+        
+        $result = $adapter->query('SELECT * FROM `usuario` WHERE usuario LIKE "'.$usuario.'" AND senha LIKE "'.$senha.'" ')->execute();
+        $row = $result->current();    
+        if($row === null)
+        {
+            return false;
+        }else{
+            return true;
+        }    
+    }
+
 
 }
