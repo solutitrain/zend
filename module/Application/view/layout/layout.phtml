@@ -57,6 +57,7 @@ $action = '';//$routeMatch->getParam('action');
                         <li class="<?php echo ($action == 'galeria') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'galeria']) ?>">Galeria</a></li>
                         <li class="<?php echo ($action == 'produto') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'produto']) ?>">Produto</a></li>
                         <li class="<?php echo ($action == 'contato') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'contato']) ?>">Contato</a></li>
+                        <li class="<?php echo ($action == 'logout') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'logout']) ?>">Logout</a></li>
                     </ul>
                 </div>
             </div>

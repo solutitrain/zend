@@ -1,0 +1,26 @@
+<?php
+class Form_Logout extends Zend\Form\Form {
+
+public function __construct(){
+
+    parent::__construct();
+
+    $this->add( [
+        'name' => 'logar',
+        'type' => Zend\Form\Element\Submit::class,
+        'attributes' => [
+            'id' => 'submit',
+            'value' => 'logar',
+            'class' => 'btn btn-success',
+        ]
+    ] );         
+} 
+}
+
+$form = new Form_Logout();
+?>
+
+<div class="jumbotron">
+    Logout com sucesso !
+</div>
+
