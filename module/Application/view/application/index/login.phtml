@@ -1,7 +1,59 @@
 <?php
+if (!empty($_POST)) {
+    var_dump($_POST['usuario']);
 
-$form = new Application\Model\Form_Login();
+    if ( !empty($_POST['usuario'] && !empty($_POST['senha']))) {
+        if( $_POST['usuario'] === 'admin' && $_POST['senha'] === 'admin' ) {
+            echo 'acesso consedido!';
+        } else {
+            echo 'Usuário não confere!';
+        }
+    } else {
+        echo 'Usuario ou senha vazios!';
+    }
+    
+}
+class Form_Login extends Zend\Form\Form {
 
+    public function __construct(){
+
+        parent::__construct();
+        $this->add( [
+            'name' => 'usuario',
+            'type' => Zend\Form\Element\Text::class,
+            'options' => [
+                'label' => 'Usuario'
+            ],
+            'attributes' => [
+                'id' => 'Usuario',
+                'class' => 'form-control'
+            ]
+        ] );
+
+        $this->add( [
+            'name' => 'senha',
+            'type' => Zend\Form\Element\password::class,
+            'options' => [
+                'label' => 'Senha'
+            ],
+            'attributes' => [
+                'id' => 'senha',
+                'class' => 'form-control'
+            ]
+        ] );
+        $this->add( [
+            'name' => 'logar',
+            'type' => Zend\Form\Element\Submit::class,
+            'attributes' => [
+                'id' => 'submit',
+                'value' => 'logar',
+                'class' => 'btn btn-success',
+            ]
+        ] );         
+    } 
+}
+//$form = new Application\Model\Form_Login();
+$form = new Form_Login();
 ?>
 
 <div class="jumbotron">

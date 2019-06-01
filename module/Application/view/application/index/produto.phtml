@@ -1,4 +1,14 @@
 <?php 
+if (!empty($_POST)) {
+    var_dump($_POST);
+    $validator = new Zend\Validator\Digits();
+    if ( $validator->isValid( trim( $_POST['quantidade'] ) ) && $validator->isValid( trim( $_POST['codigo'] ) )) {
+        echo 'Inserção no banco';
+    } else {
+        echo 'não valido';
+    }
+    
+}
 
 class Form_produto extends Zend\Form\Form {
 
@@ -19,13 +29,13 @@ class Form_produto extends Zend\Form\Form {
         ] );
 
         $this->add( [
-            'name' => 'descri',
-            'type' => Zend\Form\Element\Password::class,
+            'name' => 'descricao',
+            'type' => Zend\Form\Element\Text::class,
             'options' => [
                 'label' => 'Descrição do produto'
             ],
             'attributes' => [
-                'id' => 'descri',
+                'id' => 'descricao',
                 'class' => 'form-control'
             ]
         ] );
@@ -53,12 +63,12 @@ class Form_produto extends Zend\Form\Form {
             ]
         ] );
         $this->add( [
-            'name' => 'grava',
+            'name' => 'gravar',
             'type' => Zend\Form\Element\Submit::class,
             'attributes' => [
                 'id' => 'submit',
                 'value' => 'Gravar',
-                'class' => 'btn btn-success'
+                'class' => 'btn btn-success',
             ]
         ] );         
     }
