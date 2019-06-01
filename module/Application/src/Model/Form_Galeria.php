@@ -22,7 +22,7 @@ class Form_Galeria extends \Zend\Form\Form {
         
         $this->add( [
             'name' => 'arquivo',
-            'type' => \Zend\Form\Element\Password::class,
+            'type' => \Zend\Form\Element\File::class,
             'options' => [
                 'label' => 'Arquivo'
             ],
@@ -41,5 +41,26 @@ class Form_Galeria extends \Zend\Form\Form {
                 'class' => 'btn btn-success'
             ]
         ] );
+
+        $this->addInputFilter();
+    }
+
+    public function addInputFilter()
+    {
+        $inputFilter = new \Zend\InputFilter\InputFilter();
+
+        // File Input
+        $fileInput = new \Zend\InputFilter\FileInput('arquivo');
+        //$fileInput->setRequired(true);
+        $fileInput->getFilterChain()->attachByName(
+            'filerenameupload',
+            array(
+                'target'    => './data/avatar.png',
+                'randomize' => true,
+            )
+        );
+        $inputFilter->add($fileInput);
+
+        $this->setInputFilter($inputFilter);
     }
 }

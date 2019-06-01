@@ -44,9 +44,22 @@ class Form_Galeria extends Zend\Form\Form {
 
 $form = new Form_Galeria();
 
+$form->prepare(); 
+
 ?>
 
 <div class="jumbotron">
+    <?php
+        
+        if( $this->fileErrors != NULL ) {
+            if( empty( $this->fileErrors ) ) {
+                echo 'Upload realizada com sucesso!';
+            } else {
+                echo 'Upload não aconteceu pelos seguintes erros: '.implode( ' | ', $this->fileErrors);
+            }
+        }
+        
+    ?>
     <?php echo $this->form( $form ); ?>
 </div>
 

@@ -21,10 +21,32 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
-    
+
     public function galeriaAction()
     {
-       return new ViewModel();
+        $fileErrors = NULL;
+        $form = new \Application\Model\Form_Galeria();
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            // Make certain to merge the files info!
+            $post = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
+
+            $form->setData($post);
+
+            if ($form->isValid()) {
+                $fileErrors = [];
+            } else {
+                $fileErrors = $form->get('arquivo')->getMessages();
+            }
+        }
+
+       return new ViewModel([
+           'fileErrors' => $fileErrors,
+       ]);
     }
 
     public function produtoAction()
