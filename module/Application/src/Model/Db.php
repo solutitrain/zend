@@ -18,10 +18,8 @@ class Db
 
         $result = $adapter->query('select 1 as qtd')->execute();
         $row = $result->current();
-        var_dump( $row );exit;
-        return $row->fetchAll();
         
-    
+        return $row;
     }
 
 }

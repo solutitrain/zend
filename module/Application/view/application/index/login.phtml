@@ -1,9 +1,15 @@
 <?php
+
+session_start();
+
 if (!empty($_POST)) {
     var_dump($_POST['usuario']);
 
     if ( !empty($_POST['usuario'] && !empty($_POST['senha']))) {
         if( $_POST['usuario'] === 'admin' && $_POST['senha'] === 'admin' ) {
+            
+            $_SESSION['login'] = $_POST['usuario'];
+
             echo 'acesso consedido!';
         } else {
             echo 'Usuário não confere!';
