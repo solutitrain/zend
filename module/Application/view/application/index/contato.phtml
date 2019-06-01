@@ -1,4 +1,5 @@
 <?php 
+var_dump($_POST);
 
 class Form_Contato extends Zend\Form\Form {
 
@@ -30,7 +31,7 @@ class Form_Contato extends Zend\Form\Form {
         ] );
         $this->add( [
             'name' => 'Texto',
-            'type' => Zend\Form\Element\Text::class,
+            'type' => Zend\Form\Element\Textarea::class,
             'options' => [
                 'label' => 'Texto'
             ],
@@ -44,12 +45,15 @@ class Form_Contato extends Zend\Form\Form {
             'type' => Zend\Form\Element\Submit::class,
             'attributes' => [
                 'id' => 'submit',
-                'value' => 'Logar',
+                'value' => 'Enviar',
                 'class' => 'btn btn-success'
             ]
         ] );
     }
 }
+
+
+
 
 $form = new Form_Contato();
 
@@ -58,4 +62,6 @@ $form = new Form_Contato();
 <div class="jumbotron">
     <?php echo $this->form( $form ); ?>
 </div>
+
+
 
