@@ -62,5 +62,6 @@ class Form_Galeria extends \Zend\Form\Form {
         $inputFilter->add($fileInput);
 
         $this->setInputFilter($inputFilter);
+
     }
 }

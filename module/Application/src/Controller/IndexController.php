@@ -25,6 +25,7 @@ class IndexController extends AbstractActionController
     public function galeriaAction()
     {
         $fileErrors = NULL;
+        $tempFile = NULL;
         $form = new \Application\Model\Form_Galeria();
 
         $request = $this->getRequest();
@@ -39,13 +40,15 @@ class IndexController extends AbstractActionController
 
             if ($form->isValid()) {
                 $fileErrors = [];
+                $tempFile = $form->get('arquivo')->getValue();
             } else {
                 $fileErrors = $form->get('arquivo')->getMessages();
             }
         }
 
-       return new ViewModel([
+        return new ViewModel([
            'fileErrors' => $fileErrors,
+           'tempFile' => $tempFile,
        ]);
     }
 
