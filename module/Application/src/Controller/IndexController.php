@@ -21,11 +21,14 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+    
     public function galeriaAction()
+    {
        return new ViewModel();
     }
 
-    public function produtoAction(){
+    public function produtoAction()
+    {
         return new ViewModel();
     }
     
