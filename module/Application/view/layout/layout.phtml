@@ -54,8 +54,12 @@ $action = '';//$routeMatch->getParam('action');
                     <ul class="nav navbar-nav">
                         <li class="<?php echo ($action == 'index') ? 'active':''; ?>"><a href="<?= $this->url('home') ?>">Home</a></li>
                         <li class="<?php echo ($action == 'login') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'login']) ?>">Login</a></li>
+<<<<<<< HEAD
+                        <li class="<?php echo ($action == 'galeria') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'galeria']) ?>">Galeria</a></li>
+=======
                         <li class="<?php echo ($action == 'produto') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'produto']) ?>">produto</a></li>
                         <li class="<?php echo ($action == 'contato') ? 'active':''; ?>"><a href="<?= $this->url('application', ['action' => 'contato']) ?>">Contato</a></li>
+>>>>>>> b05b9ce9a4f412e941d1533febf11c3c4af22036
                     </ul>
                 </div>
             </div>
