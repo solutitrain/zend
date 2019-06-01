@@ -7,6 +7,11 @@
 
 namespace Application\Model;
 
+use Zend\Mail\Transport\Smtp as SmtpTransport;
+use Zend\Mail\Transport\SmtpOptions;
+use Zend\Mail\Message;
+use Zend\Mail\Transport\Sendmail as SendmailTransport; 
+
 class SendEmail
 {
  
@@ -24,8 +29,8 @@ class SendEmail
             'name'=>'localhost.localdomain',
             'host'=>'192.168.6.20',
             'port'=>'1025',
-            'connection_class'=>'login',
-            'connection_config'=>['username'=>'','password'=>'',],
+            //'connection_class'=>'login',
+            //'connection_config'=>['username'=>'','password'=>'',],
         ]);
 
         $transport->setOptions($options);
